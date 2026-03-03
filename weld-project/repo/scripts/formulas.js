@@ -17,6 +17,7 @@ const protrusionEndInput = document.getElementById('protrusionEnd');
 const weldWidthSecondInput = document.getElementById('weldWidthSecond');
 const gainHeightSecondInput = document.getElementById('gainHeightSecond');
 const distanceBetweenEdgesInput = document.getElementById('distanceBetweenEdges');
+const weldLegInput = document.getElementById('weldLeg'); // Катет шва (k)
 
 // Result elements
 const resultFn = document.getElementById('resultFn');
@@ -38,6 +39,7 @@ let angleBetta;
 let refractiveHeight;
 let protrusionEnd;
 let distanceBetweenEdgesCitcularSelection;
+let weldLeg; // Катет шва (k)
 // Переменные для формул
 let consumptionRate;
 let consumptionRateMeter;
@@ -114,6 +116,7 @@ mineButton.addEventListener('click', function() {
     weldWidthSecond = getParamValue(weldWidthSecondInput);
     gainHeightSecond = getParamValue(gainHeightSecondInput);
     distanceBetweenEdgesCitcularSelection = getParamValue(distanceBetweenEdgesInput);
+    weldLeg = getParamValue(weldLegInput); // Катет шва (k)
 
     // Get method and technical documentation
     const typeOfConnection = document.getElementById('typeOfConnection');
@@ -297,12 +300,19 @@ mineButton.addEventListener('click', function() {
         crossSectionalArea = thickness * gap + 1.57 * (radiusTransition * radiusTransition) + (thickness - blunting - radiusTransition) * radiusTransition + 0.25 * ((thickness - blunting - 2 * radiusTransition) * (thickness - blunting - 2 * radiusTransition)) * Math.tan(angleAlpha * pi / 180) + 1.5 * (weldWidth * gainHeight);
 
     } else if ((typeOfConnection.value === "Н1") && (technicalDocumentation.value === 'ГОСТ 5264' || technicalDocumentation.value === 'ГОСТ 14771')) {
-        //Fn = (e * e) / 2 + 1.05 * e * h
-        crossSectionalArea = (weldWidth * weldWidth) / 2 + 1.05 * weldWidth * refractiveHeight;
+        //Fn = 0.5 * k * k (катет шва)
+        // Для Н1: один угловой шов
+        crossSectionalArea = 0.5 * weldLeg * weldLeg;
     } 
     else if ((typeOfConnection.value === "Н2") && (technicalDocumentation.value === 'ГОСТ 5264' || technicalDocumentation.value === 'ГОСТ 14771')) {
-        //Fn = ((e * e) / 2 + 1.05 * e * h) * 2
-        crossSectionalArea = ((weldWidth * weldWidth) / 2 + 1.05 * weldWidth * refractiveHeight) * 2;
+        //Fn = k * k (катет шва)
+        // Для Н2: два угловых шва
+        crossSectionalArea = weldLeg * weldLeg;
+    }
+    else if ((typeOfConnection.value === "У1") && (technicalDocumentation.value === 'ГОСТ 5264' || technicalDocumentation.value === 'ГОСТ 14771')) {
+        //Fn = 0.5 * k * k (катет шва)
+        // Для У1: угловое без скоса кромок
+        crossSectionalArea = 0.5 * weldLeg * weldLeg;
     };
 
     //Вычисление расхода
