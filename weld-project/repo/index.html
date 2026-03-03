@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="scss/style.css" />
     <!-- Подключение шрифтов -->
     <link rel="stylesheet" href="fonts/stylesheet.css" />
-    <!-- Ссылка добавления социального меню  -->
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Font Awesome 6.5 (HTTPS) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <!-- <link rel="" href="img/favicon/favicon.ico"> -->
     <title>Weld-Weld-Weld</title>
   </head>
@@ -64,118 +64,167 @@
     </header>
 
     <!-- --------------------------- -->
-    <!-- --Пользовательские формы--- -->
+    <!-- --Калькулятор сварки-------- -->
     <!-- --------------------------- -->
-    <div class="userform center">
-      <div id="result" class="userform__box userform__hidden">
-        <!-- На метр шва -->
-        <h2 class="userform__title">НА МЕТР ШВА</h2>
-        <label class="userform__title">Площадь сечения (Fn), мм²</label>
-        <input type="text" id="resultFn" class="userform__select userform__select-i" readonly>
-        <label class="userform__title">Масса наплавки (Mn), г/м</label>
-        <input type="text" id="resultMn" class="userform__select userform__select-i" readonly>
-        <label class="userform__title">Норма расхода (Ge), г/м</label>
-        <input type="text" id="resultGe" class="userform__select userform__select-i" readonly>
-
-        <!-- На стык труб -->
-        <h2 class="userform__title">НА СТЫК ТРУБ</h2>
-        <label class="userform__title">Расход на стык (He), г</label>
-        <input type="text" id="resultHe" class="userform__select userform__select-i" readonly>
-      </div>
-      <div class="userform__box">
-
-        <!-- Способ сварки -->
-        <h2 class="userform__title">СПОСОБ СВАРКИ</h2>
-        <select id="weldingMethod" class="userform__select userform__select-a">
-          <option selected disabled></option>
-          <option class="userform__text">MMA Ручная дуговая сварка РД</option>
-          <option class="userform__text">
-            <span class= "userform__option">MIG/MAG Полуавтоматическая сварка МП</span>
-          </option>
-          <option class="userform__text">TIG Ручная аргонодуговая сварка РАД</option>
-          <option class="userform__text">SAW Автоматическая сварка под флюсом АФ</option>
-          
-        </select>
-
-        <!-- НТД по сварке -->
-        <h2 class="userform__title">НТД ПО СВАРКЕ</h2>
-        <select id="technicalDocumentation" class="userform__select userform__select-b">
-          <option selected disabled></option>
-        </select>
-
-        <!-- Вид соединения -->
-        <h2 class="userform__title">ВИД СОЕДИНЕНИЯ</h2>
-        <select id="typeOfConnection" class="userform__select userform__select-c">
-        </select>
-
-        <!-- Толщина -->
-        <h2 class="userform__title">ТОЛЩИНА</h2>
-        <select id="thicknessList" class="userform__select userform__select-d">
-        </select>
-
-        <!-- Угол разделки -->
-        <h2 class="userform__title">УГОЛ РАЗДЕЛКИ</h2>
-        <input id="cuttingAngle" type="text" class="userform__select userform__select-i" readonly />
-
-        <!-- Параметры шва -->
-        <div id="parameterInputs">
-          <h2 class="userform__title">ПАРАМЕТРЫ ШВА</h2>
-          
-          <label class="userform__title">Зазор (b), мм</label>
-          <input type="number" id="gap" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
-          
-          <label class="userform__title">Притупление (c), мм</label>
-          <input type="number" id="blunting" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
-          
-          <label class="userform__title">Ширина шва (e), мм</label>
-          <input type="number" id="weldWidth" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
-          
-          <label class="userform__title">Высота усиления (g), мм</label>
-          <input type="number" id="gainHeight" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
-          
-          <label class="userform__title">Угол разделки α, °</label>
-          <input type="number" id="angleAlpha" class="userform__select userform__select-i" placeholder="0" step="1" min="0" max="90">
-          
-          <label class="userform__title">Угол разделки β, °</label>
-          <input type="number" id="angleBetta" class="userform__select userform__select-i" placeholder="0" step="1" min="0" max="90">
-          
-          <label class="userform__title">Радиус перехода (R), мм</label>
-          <input type="number" id="radiusTransition" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
-          
-          <label class="userform__title">Катет шва (k), мм</label>
-          <input type="number" id="weldLeg" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
-          
-          <label class="userform__title">Диаметр трубы (d), мм</label>
-          <input type="number" id="diameter" class="userform__select userform__select-i" placeholder="0" step="1" min="0">
-          
-          <!-- Скрытые параметры (для сложных соединений) -->
-          <div id="advancedParams" style="display: none;">
-          <label class="userform__title">Высота преломления (h), мм</label>
-          <input type="number" id="refractiveHeight" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
-          
-          <label class="userform__title">Выступ конца (n), мм</label>
-          <input type="number" id="protrusionEnd" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
-          
-          <label class="userform__title">Ширина шва 2 (e1), мм</label>
-          <input type="number" id="weldWidthSecond" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
-          
-          <label class="userform__title">Высота усиления 2 (g1), мм</label>
-          <input type="number" id="gainHeightSecond" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
-          
-          <label class="userform__title">Расстояние между кромками (f), мм</label>
-          <input type="number" id="distanceBetweenEdges" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
+    <main class="userform center" role="main">
+      <form id="weldCalcForm" class="userform__form" novalidate>
+        <!-- Результаты расчёта -->
+        <section id="result" class="userform__box userform__hidden" role="region" aria-label="Результаты расчёта" aria-live="polite">
+          <h3 class="userform__subtitle">НА МЕТР ШВА</h3>
+          <div class="userform__result-group">
+            <label class="userform__label" for="resultFn">Площадь сечения (Fn), мм²</label>
+            <output id="resultFn" class="userform__output">—</output>
           </div>
-        </div>
+          <div class="userform__result-group">
+            <label class="userform__label" for="resultMn">Масса наплавки (Mn), г/м</label>
+            <output id="resultMn" class="userform__output">—</output>
+          </div>
+          <div class="userform__result-group">
+            <label class="userform__label" for="resultGe">Норма расхода (Ge), г/м</label>
+            <output id="resultGe" class="userform__output">—</output>
+          </div>
+          <h3 class="userform__subtitle">НА СТЫК ТРУБ</h3>
+          <div class="userform__result-group">
+            <label class="userform__label" for="resultHe">Расход на стык (He), г</label>
+            <output id="resultHe" class="userform__output">—</output>
+          </div>
+        </section>
 
-        <button id="mineButton" class="userform__button">ПОДСЧИТАТЬ</button>
-        
-        
-        <label class="toggle-control">
-          <input id="theme-check" class="checkbox-control" type="checkbox">
-          <span class="control"></span>
-        </label>
-      </div>
-    </div>
+        <section class="userform__box">
+          <h2 class="visually-hidden">Параметры сварки</h2>
+          
+          <!-- Способ сварки -->
+          <div class="userform__group">
+            <label class="userform__label" for="weldingMethod">СПОСОБ СВАРКИ</label>
+            <select id="weldingMethod" class="userform__select userform__select-a" required aria-required="true">
+              <option selected disabled value="">— выберите —</option>
+              <option value="MMA">MMA Ручная дуговая сварка РД</option>
+              <option value="MIG/MAG">MIG/MAG Полуавтоматическая сварка МП</option>
+              <option value="TIG">TIG Ручная аргонодуговая сварка РАД</option>
+              <option value="SAW">SAW Автоматическая сварка под флюсом АФ</option>
+            </select>
+          </div>
+
+          <!-- НТД по сварке -->
+          <div class="userform__group">
+            <label class="userform__label" for="technicalDocumentation">НТД ПО СВАРКЕ</label>
+            <select id="technicalDocumentation" class="userform__select userform__select-b" required aria-required="true">
+              <option selected disabled value="">— выберите —</option>
+            </select>
+          </div>
+
+          <!-- Вид соединения -->
+          <div class="userform__group">
+            <label class="userform__label" for="typeOfConnection">ВИД СОЕДИНЕНИЯ</label>
+            <select id="typeOfConnection" class="userform__select userform__select-c" required aria-required="true">
+              <option selected disabled value="">— выберите —</option>
+            </select>
+          </div>
+
+          <!-- Толщина -->
+          <div class="userform__group">
+            <label class="userform__label" for="thicknessList">ТОЛЩИНА, мм</label>
+            <select id="thicknessList" class="userform__select userform__select-d" required aria-required="true">
+              <option selected disabled value="">— выберите —</option>
+            </select>
+          </div>
+
+          <!-- Угол разделки -->
+          <div class="userform__group">
+            <label class="userform__label" for="cuttingAngle">УГОЛ РАЗДЕЛКИ</label>
+            <input id="cuttingAngle" type="text" class="userform__select userform__select-i" readonly aria-readonly="true">
+          </div>
+
+          <!-- Параметры шва -->
+          <fieldset class="userform__fieldset">
+            <legend class="userform__legend">ПАРАМЕТРЫ ШВА</legend>
+            
+            <div class="userform__group">
+              <label class="userform__label" for="gap">Зазор (b), мм</label>
+              <input type="number" id="gap" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0" aria-describedby="gap-desc">
+              <span id="gap-desc" class="visually-hidden">Зазор между кромками свариваемых деталей</span>
+            </div>
+            
+            <div class="userform__group">
+              <label class="userform__label" for="blunting">Притупление (c), мм</label>
+              <input type="number" id="blunting" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
+            </div>
+            
+            <div class="userform__group">
+              <label class="userform__label" for="weldWidth">Ширина шва (e), мм</label>
+              <input type="number" id="weldWidth" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
+            </div>
+            
+            <div class="userform__group">
+              <label class="userform__label" for="gainHeight">Высота усиления (g), мм</label>
+              <input type="number" id="gainHeight" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
+            </div>
+            
+            <div class="userform__group">
+              <label class="userform__label" for="angleAlpha">Угол разделки α, °</label>
+              <input type="number" id="angleAlpha" class="userform__select userform__select-i" placeholder="0" step="1" min="0" max="90">
+            </div>
+            
+            <div class="userform__group">
+              <label class="userform__label" for="angleBetta">Угол разделки β, °</label>
+              <input type="number" id="angleBetta" class="userform__select userform__select-i" placeholder="0" step="1" min="0" max="90">
+            </div>
+            
+            <div class="userform__group">
+              <label class="userform__label" for="radiusTransition">Радиус перехода (R), мм</label>
+              <input type="number" id="radiusTransition" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
+            </div>
+            
+            <div class="userform__group">
+              <label class="userform__label" for="weldLeg">Катет шва (k), мм</label>
+              <input type="number" id="weldLeg" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
+            </div>
+            
+            <div class="userform__group">
+              <label class="userform__label" for="diameter">Диаметр трубы (d), мм</label>
+              <input type="number" id="diameter" class="userform__select userform__select-i" placeholder="0" step="1" min="0">
+            </div>
+            
+            <!-- Расширенные параметры (для сложных соединений) -->
+            <div id="advancedParams" class="userform__advanced" style="display: none;">
+              <div class="userform__group">
+                <label class="userform__label" for="refractiveHeight">Высота преломления (h), мм</label>
+                <input type="number" id="refractiveHeight" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
+              </div>
+              
+              <div class="userform__group">
+                <label class="userform__label" for="protrusionEnd">Выступ конца (n), мм</label>
+                <input type="number" id="protrusionEnd" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
+              </div>
+              
+              <div class="userform__group">
+                <label class="userform__label" for="weldWidthSecond">Ширина шва 2 (e1), мм</label>
+                <input type="number" id="weldWidthSecond" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
+              </div>
+              
+              <div class="userform__group">
+                <label class="userform__label" for="gainHeightSecond">Высота усиления 2 (g1), мм</label>
+                <input type="number" id="gainHeightSecond" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
+              </div>
+              
+              <div class="userform__group">
+                <label class="userform__label" for="distanceBetweenEdges">Расстояние между кромками (f), мм</label>
+                <input type="number" id="distanceBetweenEdges" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
+              </div>
+            </div>
+          </fieldset>
+
+          <button type="submit" id="mineButton" class="userform__button">ПОДСЧИТАТЬ</button>
+          
+          <div class="userform__theme-toggle">
+            <label class="toggle-control">
+              <input id="theme-check" class="checkbox-control" type="checkbox" aria-label="Переключить тёмную тему">
+              <span class="control"></span>
+            </label>
+          </div>
+        </section>
+      </form>
+    </main>
 
     <!-- --------------------------- -->
     <!-- --Социальное меню---------- -->
@@ -209,41 +258,30 @@
       <span class="js-count-particles"></span>
     </div>
 
-    <!-- particles.js lib - https://github.com/VincentGarreau/particles.js -->
-    <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <!-- stats.js lib -->
-    <script src="http://threejs.org/examples/js/libs/stats.min.js"></script>
+    <!-- particles.js lib (HTTPS) -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="scripts/particles.js"></script>
   </body>
   <script>
-
-    //Код смены цветовой темы Particles
+    //Код смены цветовой темы - использует CSS классы
     const checkbox = document.getElementById('theme-check');
-    const targetElement = document.getElementById('particles-js');
-    const targetElementA = document.querySelectorAll('.userform__select');
-    const targetElementB = document.querySelectorAll('.userform__title');
+    const root = document.documentElement;
+    const particlesContainer = document.getElementById('particles-js');
   
     checkbox.addEventListener('change', function() {
         if (this.checked) {
-          targetElement.style.backgroundColor = '#381114'; /* Цвет фона темной темы */
-          targetElementA.forEach(function(elem) {
-            elem.style.backgroundColor = '#a16868';
-            elem.style.border = '2px solid #171010';
-          });
-          targetElementB.forEach(function(elem) {
-            elem.style.color = '#fff';
-          });
-          lineLinkedColor = '#fff';
-          console.log(lineLinkedColor);
+          root.classList.add('theme-dark');
+          particlesContainer.style.backgroundColor = '#381114';
+          /* Обновление цветов частиц */
+          if (typeof pJSDom !== 'undefined' && pJSDom[0]) {
+            pJSDom[0].pJS.particles.line_linked.color = '#fff';
+          }
         } else {
-            targetElement.style.backgroundColor = '#eaeaea'; /* Возврат к изначальным стилям */
-            targetElementA.forEach(function(elem) {
-              elem.style.backgroundColor = '#fff';
-              elem.style.border = '2px solid #f2f2f2';
-            });
-            targetElementB.forEach(function(elem) {
-              elem.style.color = '#cf1e1e';
-            });
+          root.classList.remove('theme-dark');
+          particlesContainer.style.backgroundColor = '#eaeaea';
+          if (typeof pJSDom !== 'undefined' && pJSDom[0]) {
+            pJSDom[0].pJS.particles.line_linked.color = '#404040';
+          }
         }
     });
   </script>

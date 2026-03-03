@@ -101,12 +101,15 @@ Material consumption norms and coefficients.
 
 *No active changes.*
 
+**Details:** `changes/2026-03-03-frontend-accessibility-fix/`
+
 ---
 
 ## Archived Changes
 
 | Change ID | Title | Date | Result |
 |-----------|-------|------|--------|
+| 2026-03-03-frontend-accessibility-fix | Frontend Accessibility & Security Fix | 2026-03-03 | ✅ SUCCESS |
 | fix-calculator-basics | Fix Calculator Basics | 2026-03-03 | ✅ SUCCESS |
 | add-input-validation | Add Input Validation | 2026-03-03 | ✅ SUCCESS |
 | improve-json-population | Improve JSON Population | 2026-03-03 | ✅ SUCCESS |
@@ -114,7 +117,7 @@ Material consumption norms and coefficients.
 | mobile-responsive-ui | Mobile Responsive + Beautiful UI | 2026-03-03 | ✅ SUCCESS |
 | add-testing | Add Testing (Jest + CI/CD) | 2026-03-03 | ✅ SUCCESS |
 
-**Summary (add-testing):** Added 39 unit tests for formulas and validation, Jest setup, GitHub Actions CI/CD pipeline.
+**Summary (frontend-accessibility-fix):** Fixed HTTP→HTTPS, added form semantics, ARIA, responsive CSS, CSS variables, mobile particles, fixed output.textContent bug. All 39 tests pass.
 
 ---
 
@@ -127,9 +130,18 @@ Material consumption norms and coefficients.
 | CRIT-003 | exel.json not loaded | 🔴 8/10 | ✅ FIXED | fetch() added |
 | CRIT-004 | Thickness limited to select | 🟠 6/10 | ⬜ OPEN | Future change |
 | CRIT-005 | No error handling | 🟠 7/10 | ⬜ OPEN | Future change |
+| SEC-001 | HTTP scripts (MITM risk) | 🔴 10/10 | ✅ FIXED | HTTPS CDN links |
+| SEC-002 | Outdated Font Awesome (vulns) | 🟠 7/10 | ✅ FIXED | Updated to v6.5.1 |
+| AXS-001 | Low color contrast (WCAG) | 🟠 8/10 | ✅ FIXED | Darkened to #991b1b |
+| AXS-002 | No form semantics | 🟠 7/10 | ✅ FIXED | Added form, fieldset, labels |
+| AXS-003 | No ARIA live regions | 🟡 5/10 | ✅ FIXED | Added aria-live="polite" |
+| RWD-001 | Fixed widths break mobile | 🔴 9/10 | ✅ FIXED | Responsive CSS added |
+| RWD-002 | No media queries | 🟠 6/10 | ✅ FIXED | Mobile/tablet breakpoints |
 | QUAL-001 | Duplicate code | 🟡 Medium | ⬜ OPEN | Future change |
 | QUAL-002 | Magic numbers | 🟡 Medium | ⬜ OPEN | Future change |
-| QUAL-003 | No input validation | 🟡 Medium | ⬜ OPEN | Future change |
+| QUAL-003 | No input validation | 🟡 Medium | ✅ FIXED | validation.js |
+| QUAL-004 | Variable typo ($fontCollorMine) | 🟡 Low | ✅ FIXED | Renamed to $fontColorMine |
+| QUAL-005 | Duplicate script loading | 🟡 Low | ✅ FIXED | Removed duplicate |
 
 **Note:** 3 of 7 critical issues resolved in fix-calculator-basics change.
 

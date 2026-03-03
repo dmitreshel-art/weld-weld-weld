@@ -1,12 +1,29 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:200,900");
+:root {
+  --color-bg-primary: #eaeaea;
+  --color-bg-secondary: #fff;
+  --color-bg-dark: #381114;
+  --color-bg-dark-alt: #a16868;
+  --color-text-primary: #991b1b;
+  --color-text-light: #fff;
+  --color-border: #f2f2f2;
+  --color-border-dark: #171010;
+}
+
+.theme-dark {
+  --color-bg-primary: #381114;
+  --color-bg-secondary: #a16868;
+  --color-text-primary: #fff;
+  --color-border: #171010;
+}
+
 * {
   padding: 0;
   margin: 0;
 }
 
 html {
-  overflow: hidden;
   /* filter: sepia(20%); */
 }
 
@@ -15,6 +32,85 @@ html {
   padding-right: calc(100vw - 520px);
 }
 
+/* ------------------ */
+/* Адаптивные стили   */
+/* ------------------ */
+.userform {
+  box-sizing: border-box;
+}
+.userform__select {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 400px;
+}
+.userform__button {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Visually hidden - для доступности */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Мобильные стили */
+@media screen and (max-width: 480px) {
+  .center {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .userform {
+    transform: translate(-50%, 10%);
+  }
+  .userform__box {
+    padding: 12px;
+    width: calc(100vw - 24px);
+  }
+  .userform__title {
+    font-size: 14px;
+  }
+  .userform__select {
+    font-size: 16px !important; /* Предотвращает zoom на iOS */
+  }
+  .userform__button {
+    font-size: 18px;
+  }
+  .site-header {
+    width: calc(100vw - 24px);
+    margin: 10px 12px;
+    padding: 8px 12px;
+  }
+  .site-identity h1 {
+    font-size: 16px;
+  }
+  .burger {
+    width: 36px;
+    height: 22px;
+  }
+  /* Социальное меню на мобильных */
+  ul {
+    top: 92%;
+  }
+}
+/* Планшеты */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .center {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .userform {
+    transform: translate(-50%, 15%);
+  }
+}
 /* ------------------ */
 /* Стили для particles */
 /* ------------------ */
@@ -189,7 +285,7 @@ option, select {
 .userform__title {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-style: normal;
-  color: #cf1e1e;
+  color: #991b1b;
   font-weight: normal;
   font-size: 20px;
 }
@@ -335,9 +431,7 @@ button:active {
   margin-bottom: 12px;
   cursor: pointer;
   font-size: 22px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   top: 19px;
   left: 134px;
   transform: translate(0%, 30%);
@@ -527,196 +621,104 @@ ul li a .vk {
   color: #1da1f2;
 }
 
-/* ------------------ */
-/* Параметры шва */
-/* ------------------ */
-#parameterInputs {
-  margin-top: 20px;
-}
-
-#parameterInputs .userform__title {
-  font-size: 16px;
-  color: #666;
-  margin-bottom: 4px;
-  margin-top: 12px;
-  display: block;
-}
-
-#parameterInputs .userform__select-i {
-  width: 300px;
-  height: 36px;
-  font-size: 16px;
-  padding: 0 8px;
-  display: block;
-  margin-bottom: 8px;
-}
-
-#parameterInputs label {
-  display: block;
-  clear: both;
-}
-
-/* Стили для ошибок валидации */
-.input-error {
-  border-color: #e94560 !important;
-  background-color: #fff5f5;
-}
-
-.error-message {
-  color: #e94560;
-  font-size: 12px;
-  margin-top: 2px;
-  margin-bottom: 4px;
-}
-
-/* Расширенные параметры (скрыты по умолчанию) */
-#advancedParams {
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px solid #eee;
-}
-
-/* ========================================
-   RESPONSIVE DESIGN - Mobile & Tablet
-   ======================================== */
-
-/* Tablet (768px and below) */
-@media screen and (max-width: 768px) {
-  .userform {
-    flex-direction: column;
-    padding: 15px;
-  }
-  
-  .userform__box {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-  
-  .userform__select-i,
-  .userform__select {
-    width: 100% !important;
-    max-width: 100%;
-    height: 44px;
-    font-size: 16px;
-  }
-  
-  .userform__title {
-    font-size: 14px;
-    margin-bottom: 6px;
-  }
-  
-  .userform__button {
-    width: 100%;
-    height: 50px;
-    font-size: 16px;
-  }
-  
-  #parameterInputs .userform__select-i {
-    width: 100% !important;
-    max-width: 100%;
-  }
-  
-  .header__title {
-    font-size: 24px;
-  }
-  
-  .particles-js-canvas-el {
-    display: none;
-  }
-}
-
-/* Mobile (480px and below) */
-@media screen and (max-width: 480px) {
-  body {
-    font-size: 14px;
-  }
-  
-  .header {
-    padding: 10px 15px;
-  }
-  
-  .header__title {
-    font-size: 20px;
-  }
-  
-  .userform {
-    padding: 10px;
-  }
-  
-  .userform__select,
-  .userform__select-i,
-  .userform__button {
-    height: 48px;
-    font-size: 16px;
-    padding: 12px;
-  }
-  
-  .userform__title {
-    font-size: 13px;
-  }
-  
-  #result {
-    padding: 15px;
-  }
-  
-  #result .userform__select-i {
-    height: 44px;
-    font-size: 14px;
-  }
-}
-
-/* Modern Card Design */
-.userform__box {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  padding: 20px;
-  transition: box-shadow 0.3s ease;
-}
-
-.userform__box:hover {
-  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
-}
-
-/* Improved Buttons */
-.userform__button {
-  background: linear-gradient(135deg, #0F3460, #16213E);
-  border-radius: 8px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-}
-
-.userform__button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(15, 52, 96, 0.4);
-}
-
-.userform__button:active {
-  transform: translateY(0);
-}
-
-/* Improved Inputs */
-.userform__select-i:focus,
-.userform__select:focus {
-  border-color: #E94560;
-  box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.1);
-  outline: none;
-}
-
-/* Better Select Styling */
-.userform__select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 12px center;
-  padding-right: 36px;
-}
-
 ul li a:hover:nth-child(3) {
   color: #c32aa3;
 }
 
 ul li a:hover:nth-child(4) {
   color: #dd4b39;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/* ------------------ */
+/* Семантические стили */
+/* ------------------ */
+.userform__form {
+  width: 100%;
+}
+
+.userform__group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+.userform__label {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #991b1b;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.userform__subtitle {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #991b1b;
+  margin: 16px 0 8px 0;
+  text-transform: uppercase;
+}
+
+.userform__fieldset {
+  border: 1px solid #f2f2f2;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+}
+
+.userform__legend {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #991b1b;
+  padding: 0 8px;
+  text-transform: uppercase;
+}
+
+.userform__result-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.userform__output {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  background-color: #f8f8f8;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.userform__theme-toggle {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+/* Адаптивность для семантических элементов */
+@media screen and (max-width: 480px) {
+  .userform__fieldset {
+    padding: 12px;
+    margin: 12px 0;
+  }
+  .userform__legend {
+    font-size: 14px;
+  }
+  .userform__label {
+    font-size: 12px;
+  }
+  .userform__output {
+    font-size: 16px;
+  }
+  .userform__subtitle {
+    font-size: 16px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

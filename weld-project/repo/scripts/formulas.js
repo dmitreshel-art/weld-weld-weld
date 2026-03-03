@@ -77,7 +77,20 @@ const rodLossCoefficientTig = 1.1;
 const wireLossCoefficientSaw = 1.02;
 
 const mineButton = document.getElementById('mineButton');
-mineButton.addEventListener('click', function() {
+const weldCalcForm = document.getElementById('weldCalcForm');
+
+// Handle form submission (works with both click and Enter key)
+if (weldCalcForm) {
+    weldCalcForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Prevent form submission
+        handleCalculation();
+    });
+} else {
+    // Fallback to button click if form not found
+    mineButton.addEventListener('click', handleCalculation);
+}
+
+function handleCalculation() {
     // === VALIDATION ===
     // Validate all inputs before calculation
     if (typeof validateAllInputs === 'function') {
@@ -323,13 +336,13 @@ mineButton.addEventListener('click', function() {
     massDepositedMetal = specificDensityDirectedMetal * crossSectionalArea; //Масса наплавленного металла (Mn = p * Fn)
     
     // Расчёт Ge (удельная норма расхода) в зависимости от метода сварки
-    if (weldingMethod.value === 'MMA Ручная дуговая сварка РД') {
+    if (weldingMethod.value === 'MMA') {
         consumptionRateSpecific = electrodeLossCoefficientMma * massDepositedMetal; //Удельная норма расхода электродов (Ge = k * Mn)
-    } else if (weldingMethod.value === 'MIG/MAG Полуавтоматическая сварка МП') {
+    } else if (weldingMethod.value === 'MIG/MAG') {
         consumptionRateSpecific = wireLossCoefficientMag * massDepositedMetal; //Удельная норма расхода проволоки (Ge = k * Mn)
-    } else if (weldingMethod.value === 'TIG Ручная аргонодуговая сварка РАД') {
+    } else if (weldingMethod.value === 'TIG') {
         consumptionRateSpecific = rodLossCoefficientTig * massDepositedMetal; //Удельная норма расхода проволоки (Ge = k * Mn)
-    } else if (weldingMethod.value === 'SAW Автоматическая сварка под флюсом АФ') {
+    } else if (weldingMethod.value === 'SAW') {
         consumptionRateSpecific = wireLossCoefficientSaw * massDepositedMetal; //Удельная норма расхода проволоки (Ge = k * Mn)
     } else {
         // По умолчанию используем коэффициент для MMA
@@ -349,17 +362,17 @@ mineButton.addEventListener('click', function() {
     resultBlock.style.visibility = 'visible';
     
     // Display results
-    if (resultFn) resultFn.value = crossSectionalArea.toFixed(2) + ' мм²';
-    if (resultMn) resultMn.value = massDepositedMetal.toFixed(4) + ' г/м';
-    if (resultGe) resultGe.value = (consumptionRateSpecific || 0).toFixed(4) + ' г/м';
-    if (resultHe) resultHe.value = consumptionRate.toFixed(4) + ' г';
+    if (resultFn) resultFn.textContent = crossSectionalArea.toFixed(2) + ' мм²';
+    if (resultMn) resultMn.textContent = massDepositedMetal.toFixed(4) + ' г/м';
+    if (resultGe) resultGe.textContent = (consumptionRateSpecific || 0).toFixed(4) + ' г/м';
+    if (resultHe) resultHe.textContent = consumptionRate.toFixed(4) + ' г';
     
     console.log('thickness:', thickness);
     console.log('Fn:', crossSectionalArea);
     console.log('Mn:', massDepositedMetal);
     console.log('Ge:', consumptionRateSpecific);
     console.log('He:', consumptionRate);
-});
+}
 
 
 

@@ -4,17 +4,36 @@ $fontFamily: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 $backgroundColor: #eaeaea;
 //Цвет кнопок
 $buttonColor: #db3535;
-//Цвет основного шрифта
-$fontCollorMine: #cf1e1e;
+//Цвет основного шрифта (WCAG AA контраст ~5.9:1)
+$fontColorMine: #991b1b;
 //Цвет при наведении
 $colorHover: #b3b3b3;
+
+// CSS Custom Properties для динамической смены темы
+:root {
+    --color-bg-primary: #eaeaea;
+    --color-bg-secondary: #fff;
+    --color-bg-dark: #381114;
+    --color-bg-dark-alt: #a16868;
+    --color-text-primary: #991b1b;
+    --color-text-light: #fff;
+    --color-border: #f2f2f2;
+    --color-border-dark: #171010;
+}
+
+// Класс тёмной темы
+.theme-dark {
+    --color-bg-primary: #381114;
+    --color-bg-secondary: #a16868;
+    --color-text-primary: #fff;
+    --color-border: #171010;
+}
 
 * {
     padding: 0;
     margin: 0;
 }
 html {
-    overflow: hidden;
     /* filter: sepia(20%); */
 }
 .center {

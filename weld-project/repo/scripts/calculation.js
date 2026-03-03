@@ -41,7 +41,7 @@ window.addEventListener("load", function (e) {
     let selectedWeldingMethod = this.value;
     technicalDocumentation.innerHTML = "";
     //---РД---
-    if (selectedWeldingMethod === "MMA Ручная дуговая сварка РД") {
+    if (selectedWeldingMethod === "MMA") {
       let optionFirst = document.createElement("option");
       optionFirst.value = "";
       optionFirst.innerText = "";
@@ -58,7 +58,7 @@ window.addEventListener("load", function (e) {
       technicalDocumentation.appendChild(optionThird);
       //---МП---
     } else if (
-      selectedWeldingMethod === "MIG/MAG Полуавтоматическая сварка МП"
+      selectedWeldingMethod === "MIG/MAG"
     ) {
       let optionFirst = document.createElement("option");
       optionFirst.value = "";
@@ -76,7 +76,7 @@ window.addEventListener("load", function (e) {
       technicalDocumentation.appendChild(optionThird);
       //---РАД---
     } else if (
-      selectedWeldingMethod === "TIG Ручная аргонодуговая сварка РАД"
+      selectedWeldingMethod === "TIG"
     ) {
       let optionFirst = document.createElement("option");
       optionFirst.value = "";
@@ -89,7 +89,7 @@ window.addEventListener("load", function (e) {
       technicalDocumentation.appendChild(optionSecond);
       //АФ
     } else if (
-      selectedWeldingMethod === "SAW Автоматическая сварка под флюсом АФ"
+      selectedWeldingMethod === "SAW"
     ) {
       let optionFirst = document.createElement("option");
       optionFirst.value = "";
@@ -107,7 +107,7 @@ window.addEventListener("load", function (e) {
   technicalDocumentation.addEventListener("change", function () {
     var selectedWeldingMethod = weldingMethod.value;
     if (
-      selectedWeldingMethod === "MMA Ручная дуговая сварка РД" &&
+      selectedWeldingMethod === "MMA" &&
       technicalDocumentation.value === "ГОСТ 5264"
     ) {
       let typeOfConnectionArray5264 = [
@@ -173,7 +173,7 @@ window.addEventListener("load", function (e) {
         typeOfConnection.appendChild(optionElement);
       });
     } else if (
-      selectedWeldingMethod === "MIG/MAG Полуавтоматическая сварка МП" &&
+      selectedWeldingMethod === "MIG/MAG" &&
       technicalDocumentation.value === "ГОСТ 14771"
     ) {
       let typeOfConnectionArray14771 = [
@@ -254,7 +254,7 @@ window.addEventListener("load", function (e) {
     
     let selectedWeldingMethod = weldingMethod.value;
     if (
-      selectedWeldingMethod === "MMA Ручная дуговая сварка РД" &&
+      selectedWeldingMethod === "MMA" &&
       technicalDocumentation.value === "ГОСТ 5264" &&
       (typeOfConnection.value === "С1" || typeOfConnection.value === "С3")
     ) {
@@ -268,7 +268,7 @@ window.addEventListener("load", function (e) {
       });
       cuttingAngleValue.value = "Без скоса";
     } else if (
-      selectedWeldingMethod === "MMA Ручная дуговая сварка РД" &&
+      selectedWeldingMethod === "MMA" &&
       technicalDocumentation.value === "ГОСТ 5264" &&
       typeOfConnection.value === "С28"
     ) {
@@ -296,7 +296,7 @@ window.addEventListener("load", function (e) {
       });
       cuttingAngleValue.value = "Без скоса";
     } else if (
-      selectedWeldingMethod === "MMA Ручная дуговая сварка РД" &&
+      selectedWeldingMethod === "MMA" &&
       technicalDocumentation.value === "ГОСТ 5264" &&
       (typeOfConnection.value === "С4" ||
         typeOfConnection.value === "С5" ||
@@ -312,7 +312,7 @@ window.addEventListener("load", function (e) {
       });
       cuttingAngleValue.value = "Без скоса";
     } else if (
-      selectedWeldingMethod === "MMA Ручная дуговая сварка РД" &&
+      selectedWeldingMethod === "MMA" &&
       technicalDocumentation.value === "ГОСТ 5264" &&
       typeOfConnection.value === "С7"
     ) {
@@ -332,7 +332,7 @@ window.addEventListener("load", function (e) {
       //-------------------------------------------------------------------------------------
       // Для ГОСТ 14771
     } else if (
-      selectedWeldingMethod === "MIG/MAG Полуавтоматическая сварка МП" &&
+      selectedWeldingMethod === "MIG/MAG" &&
       technicalDocumentation.value === "ГОСТ 14771" &&
       typeOfConnection.value === "С1"
     ) {
@@ -356,7 +356,7 @@ window.addEventListener("load", function (e) {
       });
       cuttingAngleValue.value = "Без скоса";
     } else if (
-      selectedWeldingMethod === "MIG/MAG Полуавтоматическая сварка МП" &&
+      selectedWeldingMethod === "MIG/MAG" &&
       technicalDocumentation.value === "ГОСТ 14771" &&
       typeOfConnection.value === "С28"
     ) {
@@ -385,7 +385,7 @@ window.addEventListener("load", function (e) {
       });
       cuttingAngleValue.value = "Без скоса";
     } else if (
-      selectedWeldingMethod === "MIG/MAG Полуавтоматическая сварка МП" &&
+      selectedWeldingMethod === "MIG/MAG" &&
       technicalDocumentation.value === "ГОСТ 14771" &&
       typeOfConnection.value === "С3"
     ) {
