@@ -133,22 +133,37 @@ Material consumption norms and coefficients.
 
 ---
 
-## Roadmap (Updated 2026-03-03)
+## Roadmap (Updated 2026-03-03 15:26)
 
-### Phase 1: Critical Fixes ✅ DONE
+### Phase 1: Critical Fixes ✅ COMPLETE (85%)
 1. ✅ Fix BUG-001: Parameter loading
 2. ✅ Fix BUG-002: Diameter input
-3. ⬜ Implement input validation (future)
-4. ⬜ Add error handling (future)
+3. ✅ Fix Formula bugs (Н1, Н2, У1)
+4. ✅ Add input validation
+5. ✅ Fix layout issues
+6. ⬜ Error handling (partial)
 
-### Phase 2: Enhancements
-1. Mobile responsive design
-2. Export to PDF
+### Phase 2: UI Enhancement 🚧 IN PROGRESS
+1. **Mobile responsive design** ← CURRENT
+2. Beautiful UI (shadows, cards, animations)
+3. Improve UX
+
+### Phase 3: Quality 📋 PLANNED
+1. Unit tests (Jest)
+2. E2E tests (Playwright)
+3. CI/CD setup
+
+### Phase 4: Refactoring 📋 PLANNED
+1. Remove duplicate code
+2. Improve error handling
+3. Code documentation
+
+### Phase 5: Feature Expansion 📋 PLANNED
+1. ГОСТ 14771, 16037, 8713 data
+2. PDF export
 3. History (LocalStorage)
-4. PWA support
 
-### Phase 3: Scale
-1. Material database
-2. Spatial position coefficients
-3. Multi-language support
-4. Backend API option
+### Phase 6: Scale 📋 PLANNED
+1. PWA support
+2. Multi-language
+3. Backend API option

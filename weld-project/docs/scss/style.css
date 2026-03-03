@@ -568,6 +568,143 @@ ul li a .vk {
   border-top: 1px solid #eee;
 }
 
+/* ========================================
+   RESPONSIVE DESIGN - Mobile & Tablet
+   ======================================== */
+
+/* Tablet (768px and below) */
+@media screen and (max-width: 768px) {
+  .userform {
+    flex-direction: column;
+    padding: 15px;
+  }
+  
+  .userform__box {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  
+  .userform__select-i,
+  .userform__select {
+    width: 100% !important;
+    max-width: 100%;
+    height: 44px;
+    font-size: 16px;
+  }
+  
+  .userform__title {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+  
+  .userform__button {
+    width: 100%;
+    height: 50px;
+    font-size: 16px;
+  }
+  
+  #parameterInputs .userform__select-i {
+    width: 100% !important;
+    max-width: 100%;
+  }
+  
+  .header__title {
+    font-size: 24px;
+  }
+  
+  .particles-js-canvas-el {
+    display: none;
+  }
+}
+
+/* Mobile (480px and below) */
+@media screen and (max-width: 480px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .header {
+    padding: 10px 15px;
+  }
+  
+  .header__title {
+    font-size: 20px;
+  }
+  
+  .userform {
+    padding: 10px;
+  }
+  
+  .userform__select,
+  .userform__select-i,
+  .userform__button {
+    height: 48px;
+    font-size: 16px;
+    padding: 12px;
+  }
+  
+  .userform__title {
+    font-size: 13px;
+  }
+  
+  #result {
+    padding: 15px;
+  }
+  
+  #result .userform__select-i {
+    height: 44px;
+    font-size: 14px;
+  }
+}
+
+/* Modern Card Design */
+.userform__box {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 20px;
+  transition: box-shadow 0.3s ease;
+}
+
+.userform__box:hover {
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Improved Buttons */
+.userform__button {
+  background: linear-gradient(135deg, #0F3460, #16213E);
+  border-radius: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.userform__button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(15, 52, 96, 0.4);
+}
+
+.userform__button:active {
+  transform: translateY(0);
+}
+
+/* Improved Inputs */
+.userform__select-i:focus,
+.userform__select:focus {
+  border-color: #E94560;
+  box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.1);
+  outline: none;
+}
+
+/* Better Select Styling */
+.userform__select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
 ul li a:hover:nth-child(3) {
   color: #c32aa3;
 }
