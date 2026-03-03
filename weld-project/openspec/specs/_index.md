@@ -110,8 +110,9 @@ Material consumption norms and coefficients.
 | fix-calculator-basics | Fix Calculator Basics | 2026-03-03 | ✅ SUCCESS |
 | add-input-validation | Add Input Validation | 2026-03-03 | ✅ SUCCESS |
 | improve-json-population | Improve JSON Population | 2026-03-03 | ✅ SUCCESS |
+| fix-parameter-layout | Fix Parameter Layout | 2026-03-03 | ✅ SUCCESS |
 
-**Summary (improve-json-population):** Added ГОСТ 5264-80 data for 76 joint types, created verifiable GOST-SOURCES.md document.
+**Summary (fix-parameter-layout):** Reduced input width 400→300px, reduced label size 20→16px, added container styles, hidden advanced params.
 
 ---
 
