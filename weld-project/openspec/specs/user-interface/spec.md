@@ -92,6 +92,9 @@ System shall display calculation results in designated fields.
 | Joint Type Selection | ✅ Working | calculation.js |
 | Parameter Input Fields | ✅ Implemented | index.html |
 | Result Display | ✅ Implemented | formulas.js, index.html |
+| Input Validation | ✅ Implemented | validation.js |
+| Error Display | ✅ Implemented | validation.js |
+| Clear on Type Change | ✅ Implemented | calculation.js |
 
 ## Change History
 
@@ -99,3 +102,6 @@ System shall display calculation results in designated fields.
 |------|--------|--------|
 | 2026-03-03 | Added 13 input fields | ADDED: Parameter Input Fields |
 | 2026-03-03 | Added result field IDs | ADDED: Result Display |
+| 2026-03-03 | Added validation | ADDED: Input Validation |
+| 2026-03-03 | Added error display | ADDED: Error Display |
+| 2026-03-03 | Added clear on change | MODIFIED: Clear on Type Change |

@@ -237,6 +237,14 @@ window.addEventListener("load", function (e) {
 
   //Формирование списка толщин для C1 ГОСТ 5264
   typeOfConnection.addEventListener("change", function () {
+    // === ОЧИСТКА ПОЛЕЙ ПРИ СМЕНЕ ТИПА СОЕДИНЕНИЯ ===
+    if (typeof clearAllInputs === 'function') {
+      clearAllInputs();
+    }
+    if (typeof clearAllErrors === 'function') {
+      clearAllErrors();
+    }
+    
     let selectedWeldingMethod = weldingMethod.value;
     if (
       selectedWeldingMethod === "MMA Ручная дуговая сварка РД" &&

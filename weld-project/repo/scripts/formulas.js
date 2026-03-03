@@ -76,6 +76,21 @@ const wireLossCoefficientSaw = 1.02;
 
 const mineButton = document.getElementById('mineButton');
 mineButton.addEventListener('click', function() {
+    // === VALIDATION ===
+    // Validate all inputs before calculation
+    if (typeof validateAllInputs === 'function') {
+        const validation = validateAllInputs();
+        if (!validation.valid) {
+            console.log('Validation failed:', validation.errors);
+            return; // Stop calculation if validation fails
+        }
+    }
+    
+    // Clear any previous errors
+    if (typeof clearAllErrors === 'function') {
+        clearAllErrors();
+    }
+    
     // === READ VALUES FROM INPUTS ===
     // Helper function to safely parse float
     function getParamValue(inputElement) {

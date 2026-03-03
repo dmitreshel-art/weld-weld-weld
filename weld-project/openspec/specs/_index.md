@@ -108,8 +108,9 @@ Material consumption norms and coefficients.
 | Change ID | Title | Date | Result |
 |-----------|-------|------|--------|
 | fix-calculator-basics | Fix Calculator Basics | 2026-03-03 | ✅ SUCCESS |
+| add-input-validation | Add Input Validation | 2026-03-03 | ✅ SUCCESS |
 
-**Summary:** Added 13 input fields, connected variables, loaded JSON, results display correctly.
+**Summary (add-input-validation):** Added validation rules, error display, clear on type change.
 
 ---
 
