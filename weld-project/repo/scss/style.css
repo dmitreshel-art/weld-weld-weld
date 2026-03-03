@@ -538,7 +538,8 @@ ul li a .vk {
   font-size: 16px;
   color: #666;
   margin-bottom: 4px;
-  margin-top: 8px;
+  margin-top: 12px;
+  display: block;
 }
 
 #parameterInputs .userform__select-i {
@@ -546,6 +547,13 @@ ul li a .vk {
   height: 36px;
   font-size: 16px;
   padding: 0 8px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+#parameterInputs label {
+  display: block;
+  clear: both;
 }
 
 /* Стили для ошибок валидации */
