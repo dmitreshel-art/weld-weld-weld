@@ -112,8 +112,9 @@ Material consumption norms and coefficients.
 | improve-json-population | Improve JSON Population | 2026-03-03 | ✅ SUCCESS |
 | fix-parameter-layout | Fix Parameter Layout | 2026-03-03 | ✅ SUCCESS |
 | mobile-responsive-ui | Mobile Responsive + Beautiful UI | 2026-03-03 | ✅ SUCCESS |
+| add-testing | Add Testing (Jest + CI/CD) | 2026-03-03 | ✅ SUCCESS |
 
-**Summary (mobile-responsive-ui):** Added responsive design for 320px-1920px, media queries for tablet/mobile, card-based layout with shadows, touch-friendly targets (44px+), gradient buttons with hover effects.
+**Summary (add-testing):** Added 39 unit tests for formulas and validation, Jest setup, GitHub Actions CI/CD pipeline.
 
 ---
 
@@ -134,7 +135,7 @@ Material consumption norms and coefficients.
 
 ---
 
-## Roadmap (Updated 2026-03-03 15:45)
+## Roadmap (Updated 2026-03-03 16:15)
 
 ### Phase 1: Critical Fixes ✅ COMPLETE (85%)
 1. ✅ Fix BUG-001: Parameter loading
@@ -145,14 +146,14 @@ Material consumption norms and coefficients.
 6. ⬜ Error handling (partial)
 
 ### Phase 2: UI Enhancement ✅ COMPLETE
-1. ✅ **Mobile responsive design** - DONE
+1. ✅ Mobile responsive design
 2. ✅ Beautiful UI (shadows, cards, animations)
 3. ✅ Improve UX
 
-### Phase 3: Quality 🚧 IN PROGRESS
-1. **Unit tests (Jest)** ← CURRENT
-2. E2E tests (Playwright)
-3. CI/CD setup
+### Phase 3: Quality ✅ COMPLETE
+1. ✅ Unit tests (Jest) - 39 tests passing
+2. ✅ Validation tests
+3. ✅ CI/CD (GitHub Actions)
 
 ### Phase 4: Refactoring 📋 PLANNED
 1. Remove duplicate code
