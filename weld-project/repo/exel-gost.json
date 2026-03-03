@@ -62,15 +62,15 @@
   {"connectionType": "Т1", "thickness": "10", "b": "2", "k": "11", "description": "Тавровое без скоса кромок"},
   {"connectionType": "Т1", "thickness": "12", "b": "2", "k": "12", "description": "Тавровое без скоса кромок"},
   
-  {"connectionType": "Н1", "thickness": "2", "description": "Нахлёсточное одностороннее"},
-  {"connectionType": "Н1", "thickness": "3", "description": "Нахлёсточное одностороннее"},
-  {"connectionType": "Н1", "thickness": "4", "description": "Нахлёсточное одностороннее"},
-  {"connectionType": "Н1", "thickness": "5", "description": "Нахлёсточное одностороннее"},
-  {"connectionType": "Н1", "thickness": "6", "description": "Нахлёсточное одностороннее"},
+  {"connectionType": "Н1", "thickness": "2", "B": "12", "b": "0.5", "k": "3", "description": "Нахлёсточное одностороннее"},
+  {"connectionType": "Н1", "thickness": "3", "B": "12", "b": "0.5", "k": "4", "description": "Нахлёсточное одностороннее"},
+  {"connectionType": "Н1", "thickness": "4", "B": "16", "b": "1", "k": "5", "description": "Нахлёсточное одностороннее"},
+  {"connectionType": "Н1", "thickness": "5", "B": "16", "b": "1", "k": "6", "description": "Нахлёсточное одностороннее"},
+  {"connectionType": "Н1", "thickness": "6", "B": "20", "b": "1.5", "k": "7", "description": "Нахлёсточное одностороннее"},
   
-  {"connectionType": "Н2", "thickness": "2", "description": "Нахлёсточное двустороннее"},
-  {"connectionType": "Н2", "thickness": "3", "description": "Нахлёсточное двустороннее"},
-  {"connectionType": "Н2", "thickness": "4", "description": "Нахлёсточное двустороннее"},
-  {"connectionType": "Н2", "thickness": "5", "description": "Нахлёсточное двустороннее"},
-  {"connectionType": "Н2", "thickness": "6", "description": "Нахлёсточное двустороннее"}
+  {"connectionType": "Н2", "thickness": "2", "B": "8", "b": "0.5", "k": "3", "description": "Нахлёсточное двустороннее"},
+  {"connectionType": "Н2", "thickness": "3", "B": "8", "b": "0.5", "k": "4", "description": "Нахлёсточное двустороннее"},
+  {"connectionType": "Н2", "thickness": "4", "B": "12", "b": "1", "k": "5", "description": "Нахлёсточное двустороннее"},
+  {"connectionType": "Н2", "thickness": "5", "B": "12", "b": "1", "k": "6", "description": "Нахлёсточное двустороннее"},
+  {"connectionType": "Н2", "thickness": "6", "B": "16", "b": "1.5", "k": "7", "description": "Нахлёсточное двустороннее"}
 ]
