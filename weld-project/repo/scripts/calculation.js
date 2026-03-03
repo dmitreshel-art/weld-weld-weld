@@ -2,10 +2,17 @@
 let jointData = []; // Данные о соединениях из exel.json
 
 // Загрузка данных из JSON при старте
-fetch('exel.json')
+fetch('exel-gost.json')  // Используем расширенный JSON с ГОСТ данными
   .then(response => {
     if (!response.ok) {
-      console.error('Ошибка загрузки exel.json:', response.status);
+      // Fallback на оригинальный файл
+      return fetch('exel.json');
+    }
+    return response;
+  })
+  .then(response => {
+    if (!response.ok) {
+      console.error('Ошибка загрузки JSON данных:', response.status);
       return [];
     }
     return response.json();
@@ -426,15 +433,57 @@ window.addEventListener("load", function (e) {
       const weldWidthInput = document.getElementById('weldWidth');
       const gainHeightInput = document.getElementById('gainHeight');
       const angleAlphaInput = document.getElementById('angleAlpha');
+      const bluntingInput = document.getElementById('blunting');
+      const radiusTransitionInput = document.getElementById('radiusTransition');
+      const diameterInput = document.getElementById('diameter');
+      const refractiveHeightInput = document.getElementById('refractiveHeight');
+      const protrusionEndInput = document.getElementById('protrusionEnd');
+      const weldWidthSecondInput = document.getElementById('weldWidthSecond');
+      const gainHeightSecondInput = document.getElementById('gainHeightSecond');
+      const distanceBetweenEdgesInput = document.getElementById('distanceBetweenEdges');
       
-      if (gapInput && foundData.gap) gapInput.value = foundData.gap;
-      if (weldWidthInput && foundData.weldWidth) weldWidthInput.value = foundData.weldWidth;
-      if (gainHeightInput && foundData.gainHeight) gainHeightInput.value = foundData.gainHeight;
+      // Заполняем поля если данные есть
+      if (gapInput && foundData.b) gapInput.value = foundData.b;
+      if (weldWidthInput && foundData.e) weldWidthInput.value = foundData.e;
+      if (gainHeightInput && foundData.g) gainHeightInput.value = foundData.g;
       if (angleAlphaInput && foundData.angleAlpha) angleAlphaInput.value = foundData.angleAlpha;
+      if (bluntingInput && foundData.blunting) bluntingInput.value = foundData.blunting;
+      if (radiusTransitionInput && foundData.R) radiusTransitionInput.value = foundData.R;
+      if (diameterInput && foundData.diameter) diameterInput.value = foundData.diameter;
+      
+      // Показываем/скрываем поля в зависимости от типа соединения
+      updateParameterVisibility(selectedConnection);
       
       console.log('Загружены данные для', selectedConnection, 'толщина', selectedThickness, ':', foundData);
     } else {
+      // Очищаем поля если данных нет
+      clearAllInputs();
       console.log('Данные не найдены для', selectedConnection, 'толщина', selectedThickness);
     }
   });
 });
+
+// Функция показа/скрытия параметров по типу соединения
+function updateParameterVisibility(connectionType) {
+  const advancedParams = document.getElementById('advancedParams');
+  
+  // Показываем diameter для трубных соединений (если есть в названии)
+  const diameterInput = document.getElementById('diameter');
+  const diameterLabel = diameterInput?.parentElement?.querySelector('label');
+  
+  // Все поля по умолчанию видимы
+  const allInputs = document.querySelectorAll('#parameterInputs input');
+  allInputs.forEach(input => {
+    input.style.display = 'block';
+    const label = input.parentElement?.querySelector('label');
+    if (label) label.style.display = 'block';
+  });
+  
+  // Скрываем advanced по умолчанию
+  if (advancedParams) {
+    advancedParams.style.display = 'none';
+  }
+  
+  // Специфичная логика по типам
+  // Будет расширена позже
+}
