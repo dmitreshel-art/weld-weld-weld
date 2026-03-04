@@ -1,70 +1,65 @@
 # Implementation Tasks — Missing Thickness Data
 
-## Status: 🔵 PROPOSED — Awaiting user decision
+## Status: 🟡 IMPLEMENTING — Option E selected
 
 ---
 
-## 🔍 KEY FINDING: Data Already Exists!
+## ✅ Completed Tasks
 
-### Данные в exel-gost.json (уже существуют):
-| Тип | Толщины | Описание |
-|-----|---------|----------|
-| С1 | 1-4 мм | Стыковое с отбортовкой двух кромок |
-| С2 | 1-4 мм | Стыковое с отбортовкой одной кромки |
-| С3 | 1-4 мм | Стыковое с отбортовкой двух кромок |
-| С8 | 3-16 мм | Стыковое V-образным скосом одной кромки |
-| С17 | 3-20 мм | Стыковое V-образным скосом двух кромок |
-| У1 | 1-12 мм | Угловое без скоса кромок |
-| У2 | 1-12 мм | Угловое без скоса кромок |
-| Т1 | 2-12 мм | Тавровое без скоса кромок |
-| Н1 | 2-6 мм | Нахлёсточное одностороннее |
-| Н2 | 2-6 мм | Нахлёсточное двустороннее |
+### Task 0.1: Анализ источников данных ✅ Done
+- Обнаружен `gost-data.js` с 18 типами соединений
+- Сравнение: hardcoded (7) vs JSON (10) vs GOST (18)
 
-**Всего 10 типов с готовыми данными!**
+### Task 1.1: Подключить GOST_5264_DATA ✅ Done
+**File:** `scripts/calculation.js`
 
----
+Изменения:
+- Заменён блок if/else на динамический поиск в `GOST_5264_DATA`
+- Добавлен fallback для С28 (нет в GOST_5264_DATA)
+- MIG/MAG + ГОСТ 14771 оставлен hardcoded (нет данных)
 
-## Revised Options
+```javascript
+// Было:
+if (typeOfConnection.value === "С1" || typeOfConnection.value === "С3") {
+  let thicknessListC1 = ["", "1", "2", "3", "4"];
+  // ...
+}
 
-### Вариант E: Использовать JSON данные (РЕКОМЕНДУЕТСЯ)
-
-**Подход:** Вместо hardcoded обработчиков, загрузить толщины из `exel-gost.json`.
-
-**Плюсы:**
-- ✅ Данные уже существуют
-- ✅ Покрывает больше типов (10 вместо 5)
-- ✅ Легко расширять — добавить в JSON
-- ✅ Единый источник данных
-
-**Реализация:**
-1. При выборе "Вид соединения" — фильтровать JSON по выбранному типу
-2. Извлекать уникальные толщины
-3. Заполнять dropdown
-
-**Оценка времени:** 1-2 часа
+// Стало:
+const jointData = GOST_5264_DATA.find(j => j.connectionType === selectedType);
+if (jointData && jointData.data) {
+  const thicknesses = [...new Set(jointData.data.map(d => d.thickness))];
+  // populate dropdown
+}
+```
 
 ---
 
-## Phase 0: Decision Required
+## ⏳ Pending Tasks
 
-### Вопрос: Какой вариант предпочитаете?
-- [ ] **E:** Использовать JSON данные (рекомендуется)
-- [ ] **A:** Добавить недостающие данные из ГОСТ
-- [ ] **B:** Ограничить список рабочими типами
-- [ ] **C:** Ручной ввод толщины (fallback)
+### Task 1.2: Проверить на сайте ⬜ Ready
+- Открыть https://dmitreshel-art.github.io/weld-weld-weld/
+- Выбрать MMA + ГОСТ 5264
+- Проверить типы: С1, С2, С3, С8, С17, У1, Т1, Н1
+- Убедиться что толщины заполняются
+
+### Task 1.3: Добавить С28 в gost-data.js ⬜ Pending
+- С28 отсутствует в GOST_5264_DATA
+- Сейчас использует hardcoded fallback
+- Нужно добавить данные из ГОСТ
+
+### Task 1.4: Расширить для других ГОСТ ⬜ Future
+- ГОСТ 14771-76 (MIG/MAG)
+- ГОСТ 16037-70 (TIG)
+- ГОСТ 8713-79 (SAW)
 
 ---
 
-## Phase 1: Implementation (перед началом)
+## Coverage Summary
 
-*Задачи будут определены после выбора варианта*
-
----
-
-## Technical Details
-
-### Местоположение кода:
-- Dropdown population: `calculation.js` line ~95-150
-- Thickness handlers: `calculation.js` line ~215-380
-- JSON data: `exel-gost.json` (root folder)
-- JSON loading: `calculation.js` line ~1-30 (fetch)
+| Source | Before | After |
+|--------|--------|-------|
+| MMA + ГОСТ 5264 | 7 types | **18 types** |
+| MIG/MAG + ГОСТ 14771 | 3 types | 3 types (unchanged) |
+| TIG + ГОСТ 16037 | 0 types | 0 types |
+| SAW + ГОСТ 8713 | 0 types | 0 types |

@@ -1,7 +1,7 @@
 # Change Proposal: Missing Thickness Data for Connection Types
 
 ## Status
-🔵 PROPOSED — Awaiting discussion
+🟡 IMPLEMENTING — Using GOST_5264_DATA (Option E)
 
 ## Summary
 Множество типов соединений в выпадающем списке не имеют обработчиков для выбора толщины. Пользователь может выбрать тип соединения (например, С9), но поле "Толщина" остаётся пустым — нет вариантов для выбора.
