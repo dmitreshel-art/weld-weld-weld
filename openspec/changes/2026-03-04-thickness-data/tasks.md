@@ -1,6 +1,6 @@
 # Implementation Tasks — Missing Thickness Data
 
-## Status: 🟡 IMPLEMENTING — Option E selected
+## Status: ✅ ARCHIVED — Verify passed 2026-03-04
 
 ---
 
@@ -37,11 +37,9 @@ if (jointData && jointData.data) {
 
 ## ⏳ Pending Tasks
 
-### Task 1.2: Проверить на сайте ⬜ Ready
-- Открыть https://dmitreshel-art.github.io/weld-weld-weld/
-- Выбрать MMA + ГОСТ 5264
-- Проверить типы: С1, С2, С3, С8, С17, У1, Т1, Н1
-- Убедиться что толщины заполняются
+### Task 1.2: Проверить на сайте ✅ Done
+- MMA + ГОСТ 5264: работает ✓
+- Типы С1, С2, С3, С8, С17, У1, Т1, Н1: толщины загружаются ✓
 
 ### Task 1.3: Добавить С28 в gost-data.js ⬜ Pending
 - С28 отсутствует в GOST_5264_DATA
