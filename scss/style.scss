@@ -711,13 +711,27 @@ ul li a:hover:nth-child(4) {
 /* Desktop Grid Layout (Variant B: Results on right) */
 /* ------------------ */
 @media screen and (min-width: 769px) {
+    // Основной контейнер формы - убираем конфликтующие стили
+    .userform {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 80px;
+        transform: translateX(-50%);
+        width: auto;
+        max-width: 940px;
+    }
+    
+    // Форма внутри
+    .userform__form {
+        width: 100%;
+    }
+    
     // Основной контейнер - 2 колонки, по центру
     .userform__desktop-wrapper {
         display: grid;
-        grid-template-columns: 1fr 300px;
+        grid-template-columns: 1fr 280px;
         gap: 20px;
-        max-width: 900px;
-        margin: 0 auto;
         width: 100%;
     }
     
@@ -734,6 +748,9 @@ ul li a:hover:nth-child(4) {
         width: 100%;
         padding: 16px;
         box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
     }
     
     // Правая колонка - результаты (sticky)
@@ -744,6 +761,7 @@ ul li a:hover:nth-child(4) {
         border-radius: 10px;
         padding: 16px;
         box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+        visibility: visible !important;
         
         .userform__subtitle:first-child {
             margin-top: 0;
@@ -793,21 +811,29 @@ ul li a:hover:nth-child(4) {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 8px 12px;
+        width: 100%;
+        border: none;
+        padding: 0;
+        margin: 0;
         
         .userform__legend {
             grid-column: 1 / -1;
+            padding-bottom: 8px;
         }
     }
     
     // Компактные поля
     .userform__group {
-        margin-bottom: 8px;
+        margin-bottom: 0;
         width: 100%;
+        display: flex;
+        flex-direction: column;
     }
     
+    // Все селекты и инпуты - на полную ширину ячейки
     .userform__select {
-        max-width: 100%;
         width: 100%;
+        max-width: 100%;
         box-sizing: border-box;
     }
     
@@ -819,43 +845,40 @@ ul li a:hover:nth-child(4) {
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
-    }
-    
-    .userform__select-i {
-        height: 40px;
+        height: 44px;
+        line-height: normal;
+        padding: 8px 12px;
     }
     
     // Компактные labels
     .userform__label {
         font-size: 11px;
-        margin-bottom: 2px;
+        margin-bottom: 4px;
+        text-align: left;
+        width: 100%;
     }
     
     // Кнопка по центру
     .userform__button {
         width: 100%;
         max-width: 100%;
+        margin-top: 16px;
     }
     
     // Theme toggle по центру
     .userform__theme-toggle {
         justify-content: center;
+        margin-top: 12px;
     }
     
     // Header компактнее
     .site-header {
-        margin: 15px 30px;
+        margin: 10px 30px;
         padding: 0.3em 0.8em;
     }
     
     .site-identity h1 {
         font-size: 18px;
-    }
-    
-    // Форма ближе к верху, по центру
-    .userform {
-        transform: translate(-50%, 5%);
-        top: 60px;
     }
     
     // Социальное меню выше
