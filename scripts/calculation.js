@@ -252,163 +252,88 @@ window.addEventListener("load", function (e) {
       clearAllErrors();
     }
     
-    let selectedWeldingMethod = weldingMethod.value;
-    if (
-      selectedWeldingMethod === "MMA" &&
-      technicalDocumentation.value === "ГОСТ 5264" &&
-      (typeOfConnection.value === "С1" || typeOfConnection.value === "С3")
-    ) {
-      let thicknessListC1 = ["", "1", "2", "3", "4"];
-      thicknessList.innerText = "";
-      thicknessListC1.forEach(function (value) {
-        let optionElement = document.createElement("option");
-        optionElement.value = value;
-        optionElement.innerText = value;
-        thicknessList.appendChild(optionElement);
-      });
-      cuttingAngleValue.value = "Без скоса";
-    } else if (
-      selectedWeldingMethod === "MMA" &&
-      technicalDocumentation.value === "ГОСТ 5264" &&
-      typeOfConnection.value === "С28"
-    ) {
-      let thicknessListC1 = [
-        "",
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-        "11",
-        "12",
-      ];
-      thicknessList.innerText = "";
-      thicknessListC1.forEach(function (value) {
-        let optionElement = document.createElement("option");
-        optionElement.value = value;
-        optionElement.innerText = value;
-        thicknessList.appendChild(optionElement);
-      });
-      cuttingAngleValue.value = "Без скоса";
-    } else if (
-      selectedWeldingMethod === "MMA" &&
-      technicalDocumentation.value === "ГОСТ 5264" &&
-      (typeOfConnection.value === "С4" ||
-        typeOfConnection.value === "С5" ||
-        typeOfConnection.value === "С6")
-    ) {
-      let thicknessListC1 = ["", "1", "1.5", "2", "2.5", "3", "4"];
-      thicknessList.innerText = "";
-      thicknessListC1.forEach(function (value) {
-        let optionElement = document.createElement("option");
-        optionElement.value = value;
-        optionElement.innerText = value;
-        thicknessList.appendChild(optionElement);
-      });
-      cuttingAngleValue.value = "Без скоса";
-    } else if (
-      selectedWeldingMethod === "MMA" &&
-      technicalDocumentation.value === "ГОСТ 5264" &&
-      typeOfConnection.value === "С7"
-    ) {
-      let thicknessListC1 = ["", "2", "3", "4", "5"];
-      thicknessList.innerText = "";
-      thicknessListC1.forEach(function (value) {
-        let optionElement = document.createElement("option");
-        optionElement.value = value;
-        optionElement.innerText = value;
-        thicknessList.appendChild(optionElement);
-      });
-      cuttingAngleValue.value = "Без скоса";
-      //-------------------------------------------------------------------------------------
-      //-------------------------------------------------------------------------------------
-      //-------------------------------------------------------------------------------------
-      //-------------------------------------------------------------------------------------
-      //-------------------------------------------------------------------------------------
-      // Для ГОСТ 14771
-    } else if (
-      selectedWeldingMethod === "MIG/MAG" &&
-      technicalDocumentation.value === "ГОСТ 14771" &&
-      typeOfConnection.value === "С1"
-    ) {
-      let thicknessListC1 = [
-        "",
-        "0.5",
-        "1",
-        "1.5",
-        "2",
-        "2.5",
-        "3",
-        "3.5",
-        "4",
-      ];
-      thicknessList.innerText = "";
-      thicknessListC1.forEach(function (value) {
-        let optionElement = document.createElement("option");
-        optionElement.value = value;
-        optionElement.innerText = value;
-        thicknessList.appendChild(optionElement);
-      });
-      cuttingAngleValue.value = "Без скоса";
-    } else if (
-      selectedWeldingMethod === "MIG/MAG" &&
-      technicalDocumentation.value === "ГОСТ 14771" &&
-      typeOfConnection.value === "С28"
-    ) {
-      let thicknessListC1 = [
-        "",
-        "1",
-        "1.5",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
-        "11",
-        "12",
-      ];
-      thicknessList.innerText = "";
-      thicknessListC1.forEach(function (value) {
-        let optionElement = document.createElement("option");
-        optionElement.value = value;
-        optionElement.innerText = value;
-        thicknessList.appendChild(optionElement);
-      });
-      cuttingAngleValue.value = "Без скоса";
-    } else if (
-      selectedWeldingMethod === "MIG/MAG" &&
-      technicalDocumentation.value === "ГОСТ 14771" &&
-      typeOfConnection.value === "С3"
-    ) {
-      let thicknessListC1 = [
-        "",
-        "0.5",
-        "1",
-        "1.5",
-        "2",
-        "2.5",
-        "3",
-        "3.5",
-        "4",
-      ];
-      thicknessList.innerText = "";
-      thicknessListC1.forEach(function (value) {
-        let optionElement = document.createElement("option");
-        optionElement.value = value;
-        optionElement.innerText = value;
-        thicknessList.appendChild(optionElement);
-      });
-      cuttingAngleValue.value = "Без скоса";
+    // Очистка dropdown толщин
+    thicknessList.innerHTML = '<option selected disabled value="">— выберите —</option>';
+    
+    const selectedType = typeOfConnection.value;
+    const selectedMethod = weldingMethod.value;
+    const selectedGOST = technicalDocumentation.value;
+    
+    // === MMA + ГОСТ 5264: ИСПОЛЬЗУЕМ GOST_5264_DATA ===
+    if (selectedMethod === "MMA" && selectedGOST === "ГОСТ 5264" && selectedType) {
+      // Поиск типа соединения в GOST_5264_DATA
+      const jointData = typeof GOST_5264_DATA !== 'undefined' 
+        ? GOST_5264_DATA.find(j => j.connectionType === selectedType)
+        : null;
+      
+      if (jointData && jointData.data) {
+        // Извлечь уникальные толщины
+        const thicknesses = [...new Set(jointData.data.map(d => d.thickness))].sort((a, b) => a - b);
+        
+        // Заполнить dropdown
+        thicknessList.innerHTML = '<option selected disabled value="">— выберите —</option>';
+        thicknesses.forEach(t => {
+          const option = document.createElement('option');
+          option.value = t;
+          option.textContent = t;
+          thicknessList.appendChild(option);
+        });
+        
+        // Установить угол разделки
+        if (jointData.data[0] && jointData.data[0].angleAlpha) {
+          cuttingAngleValue.value = jointData.data[0].angleAlpha + '°';
+        } else {
+          cuttingAngleValue.value = "Без скоса";
+        }
+        
+        console.log(`Тип ${selectedType}: загружены толщины [${thicknesses.join(', ')}] из GOST_5264_DATA`);
+      } else if (selectedType === "С28") {
+        // Fallback для С28 (нет в GOST_5264_DATA)
+        const thicknesses = ["1","2","3","4","5","6","7","8","9","10","11","12"];
+        thicknessList.innerHTML = '<option selected disabled value="">— выберите —</option>';
+        thicknesses.forEach(t => {
+          const option = document.createElement('option');
+          option.value = t;
+          option.textContent = t;
+          thicknessList.appendChild(option);
+        });
+        cuttingAngleValue.value = "Без скоса";
+        console.log(`Тип С28: используются hardcoded данные (нет в GOST_5264_DATA)`);
+      } else {
+        // Тип не найден
+        console.warn(`Тип ${selectedType} не найден в GOST_5264_DATA`);
+        cuttingAngleValue.value = "";
+      }
+      return;
     }
+    
+    // === MIG/MAG + ГОСТ 14771: HARDCODED (нет данных в GOST_5264_DATA) ===
+    if (selectedMethod === "MIG/MAG" && selectedGOST === "ГОСТ 14771") {
+      let thicknesses = [];
+      
+      if (selectedType === "С1" || selectedType === "С3") {
+        thicknesses = ["", "0.5", "1", "1.5", "2", "2.5", "3", "3.5", "4"];
+        cuttingAngleValue.value = "Без скоса";
+      } else if (selectedType === "С28") {
+        thicknesses = ["", "1", "1.5", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+        cuttingAngleValue.value = "Без скоса";
+      }
+      
+      if (thicknesses.length > 0) {
+        thicknessList.innerHTML = '';
+        thicknesses.forEach(t => {
+          const option = document.createElement('option');
+          option.value = t;
+          option.textContent = t;
+          thicknessList.appendChild(option);
+        });
+      }
+      return;
+    }
+    
+    // === ДРУГИЕ ГОСТ: НЕТ ДАННЫХ ===
+    console.warn(`Нет данных для ${selectedMethod} + ${selectedGOST} + ${selectedType}`);
+    cuttingAngleValue.value = "";
   });
   
   // === ЗАПОЛНЕНИЕ ПАРАМЕТРОВ ИЗ JSON ===
