@@ -190,27 +190,16 @@ option, select {
     }
 }
 
-/* Колонка "Параметры" (fieldset) - 2 колонки внутри */
+/* Колонка "Параметры" - 2 колонки внутри */
 .userform__column--params {
-    border: none;
-    margin: 0;
-    padding: 20px;
+    /* Такой же flex как у других колонок */
+}
+
+.userform__params-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
     gap: 12px 20px;
-    
-    /* Заголовок на всю ширину */
-    .userform__column-title {
-        grid-column: 1 / -1;
-        margin: 0 0 16px 0;
-        padding-bottom: 12px;
-    }
-    
-    /* Каждая группа занимает 1 ячейку */
-    .userform__group {
-        margin: 0;
-    }
+    width: 100%;
 }
 
 /* Колонка "Результаты" */

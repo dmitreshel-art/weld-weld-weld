@@ -93,56 +93,58 @@
           </section>
           
           <!-- Колонка 2: Параметры шва -->
-          <fieldset class="userform__column userform__column--params">
-            <legend class="userform__column-title">ПАРАМЕТРЫ ШВА</legend>
+          <section class="userform__column userform__column--params">
+            <h3 class="userform__column-title">Параметры шва</h3>
             
-            <div class="userform__group">
-              <label class="userform__label" for="gap">Зазор (b), мм</label>
-              <input type="number" id="gap" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
-            </div>
-            
-            <div class="userform__group">
-              <label class="userform__label" for="blunting">Притупление (c), мм</label>
-              <input type="number" id="blunting" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
-            </div>
-            
-            <div class="userform__group">
-              <label class="userform__label" for="weldWidth">Ширина шва (e), мм</label>
-              <input type="number" id="weldWidth" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
-            </div>
-            
-            <div class="userform__group">
-              <label class="userform__label" for="gainHeight">Высота усиления (g), мм</label>
-              <input type="number" id="gainHeight" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
-            </div>
-            
-            <div class="userform__group">
-              <label class="userform__label" for="angleAlpha">Угол разделки α, °</label>
-              <input type="number" id="angleAlpha" class="userform__select userform__select-i" placeholder="0" step="1" min="0" max="90">
-            </div>
-            
-            <div class="userform__group">
-              <label class="userform__label" for="angleBetta">Угол разделки β, °</label>
-              <input type="number" id="angleBetta" class="userform__select userform__select-i" placeholder="0" step="1" min="0" max="90">
-            </div>
-            
-            <div class="userform__group">
-              <label class="userform__label" for="radiusTransition">Радиус перехода (R), мм</label>
-              <input type="number" id="radiusTransition" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
-            </div>
-            
-            <div class="userform__group">
-              <label class="userform__label" for="weldLeg">Катет шва (k), мм</label>
-              <input type="number" id="weldLeg" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
-            </div>
-            
-            <div class="userform__group">
-              <label class="userform__label" for="diameter">Диаметр трубы (d), мм</label>
-              <input type="number" id="diameter" class="userform__select userform__select-i" placeholder="0" step="1" min="0">
+            <div class="userform__params-grid">
+              <div class="userform__group">
+                <label class="userform__label" for="gap">Зазор (b), мм</label>
+                <input type="number" id="gap" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
+              </div>
+              
+              <div class="userform__group">
+                <label class="userform__label" for="blunting">Притупление (c), мм</label>
+                <input type="number" id="blunting" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
+              </div>
+              
+              <div class="userform__group">
+                <label class="userform__label" for="weldWidth">Ширина шва (e), мм</label>
+                <input type="number" id="weldWidth" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
+              </div>
+              
+              <div class="userform__group">
+                <label class="userform__label" for="gainHeight">Высота усиления (g), мм</label>
+                <input type="number" id="gainHeight" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
+              </div>
+              
+              <div class="userform__group">
+                <label class="userform__label" for="angleAlpha">Угол разделки α, °</label>
+                <input type="number" id="angleAlpha" class="userform__select userform__select-i" placeholder="0" step="1" min="0" max="90">
+              </div>
+              
+              <div class="userform__group">
+                <label class="userform__label" for="angleBetta">Угол разделки β, °</label>
+                <input type="number" id="angleBetta" class="userform__select userform__select-i" placeholder="0" step="1" min="0" max="90">
+              </div>
+              
+              <div class="userform__group">
+                <label class="userform__label" for="radiusTransition">Радиус перехода (R), мм</label>
+                <input type="number" id="radiusTransition" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
+              </div>
+              
+              <div class="userform__group">
+                <label class="userform__label" for="weldLeg">Катет шва (k), мм</label>
+                <input type="number" id="weldLeg" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
+              </div>
+              
+              <div class="userform__group">
+                <label class="userform__label" for="diameter">Диаметр трубы (d), мм</label>
+                <input type="number" id="diameter" class="userform__select userform__select-i" placeholder="0" step="1" min="0">
+              </div>
             </div>
             
             <!-- Расширенные параметры (скрыты по умолчанию) -->
-            <div id="advancedParams" class="userform__advanced" style="display: none;">
+            <div id="advancedParams" class="userform__advanced">
               <div class="userform__group">
                 <label class="userform__label" for="refractiveHeight">Высота преломления (h), мм</label>
                 <input type="number" id="refractiveHeight" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
@@ -168,7 +170,7 @@
                 <input type="number" id="distanceBetweenEdges" class="userform__select userform__select-i" placeholder="0" step="0.1" min="0">
               </div>
             </div>
-          </fieldset>
+          </section>
           
           <!-- Колонка 3: Результаты -->
           <aside id="result" class="userform__column userform__column--results" role="region" aria-label="Результаты расчёта" aria-live="polite">
