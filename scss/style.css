@@ -418,8 +418,10 @@ ul li a i {
 /* ------------------ */
 /* Скрытые элементы */
 /* ------------------ */
-.userform__hidden {
-  visibility: hidden;
+/* Результаты всегда видны на desktop */
+.userform__column--results {
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .userform__advanced {
