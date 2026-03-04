@@ -708,10 +708,10 @@ ul li a:hover:nth-child(4) {
 //===================================================================
 //===================================================================
 /* ------------------ */
-/* Desktop Grid Layout (Variant B: Results on right) */
+/* Desktop 3-Column Layout */
 /* ------------------ */
 @media screen and (min-width: 769px) {
-    // Основной контейнер формы - убираем конфликтующие стили
+    // Основной контейнер формы
     .userform {
         display: block;
         position: absolute;
@@ -719,7 +719,7 @@ ul li a:hover:nth-child(4) {
         top: 80px;
         transform: translateX(-50%);
         width: auto;
-        max-width: 940px;
+        max-width: 1100px;
     }
     
     // Форма внутри
@@ -727,110 +727,104 @@ ul li a:hover:nth-child(4) {
         width: 100%;
     }
     
-    // Основной контейнер - 2 колонки, по центру
+    // 3-колоночный grid
     .userform__desktop-wrapper {
         display: grid;
-        grid-template-columns: 1fr 280px;
+        grid-template-columns: 1fr 1fr 1fr;
         gap: 20px;
         width: 100%;
     }
     
-    // Левая колонка - форма
-    .userform__input-column {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        width: 100%;
-    }
-    
-    // Box внутри должен быть на полную ширину
-    .userform__input-column .userform__box {
-        width: 100%;
-        padding: 16px;
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-    }
-    
-    // Правая колонка - результаты (sticky)
-    .userform__results-panel {
-        position: sticky;
-        top: 20px;
+    // Общие стили колонок
+    .userform__column {
         background: #fff;
         border-radius: 10px;
         padding: 16px;
         box-shadow: 0 2px 12px rgba(0,0,0,0.1);
-        visibility: visible !important;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    // Заголовок колонки
+    .userform__column-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #333;
+        margin: 0 0 12px 0;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #db3535;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    // Колонка "Основное" - кнопка внизу
+    .userform__column--main {
+        justify-content: flex-start;
         
-        .userform__subtitle:first-child {
-            margin-top: 0;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #f2f2f2;
+        .userform__button {
+            margin-top: auto;
         }
         
+        .userform__theme-toggle {
+            justify-content: center;
+            margin-top: 12px;
+        }
+    }
+    
+    // Колонка "Параметры"
+    .userform__column--params {
+        border: none;
+    }
+    
+    // Колонка "Результаты"
+    .userform__column--results {
+        visibility: visible !important;
+        
         .userform__subtitle {
-            margin-top: 16px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+            margin: 16px 0 8px 0;
             padding-top: 12px;
-            border-top: 1px solid #f2f2f2;
-            font-size: 14px;
+            border-top: 1px solid #eee;
+            
+            &:first-of-type {
+                margin-top: 0;
+                padding-top: 0;
+                border-top: none;
+            }
         }
         
         .userform__result-group {
-            margin-bottom: 10px;
-        }
-        
-        .userform__label {
-            font-size: 11px;
-            margin-bottom: 2px;
+            margin-bottom: 8px;
         }
         
         .userform__output {
             font-size: 16px;
-            padding: 6px 10px;
+            font-weight: 500;
+            padding: 6px 0;
+            color: #db3535;
         }
     }
     
-    // Результаты видны всегда на desktop
-    .userform__results-panel.userform__hidden {
-        visibility: visible !important;
-        opacity: 0.5;
-        transition: opacity 0.3s ease;
-    }
-    
-    // Основные селекты - 2 колонки
-    .userform__main-selects {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-        width: 100%;
-    }
-    
-    // Параметры шва - 3 колонки
-    .userform__fieldset {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px 12px;
-        width: 100%;
-        border: none;
-        padding: 0;
-        margin: 0;
-        
-        .userform__legend {
-            grid-column: 1 / -1;
-            padding-bottom: 8px;
-        }
-    }
-    
-    // Компактные поля
+    // Группы полей
     .userform__group {
-        margin-bottom: 0;
-        width: 100%;
+        margin: 0;
         display: flex;
         flex-direction: column;
+        gap: 4px;
     }
     
-    // Все селекты и инпуты - на полную ширину ячейки
+    // Labels
+    .userform__label {
+        font-size: 11px;
+        font-weight: 500;
+        color: #666;
+        margin: 0;
+    }
+    
+    // Все селекты и инпуты
     .userform__select {
         width: 100%;
         max-width: 100%;
@@ -845,30 +839,18 @@ ul li a:hover:nth-child(4) {
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
-        height: 44px;
+        height: 40px;
         line-height: normal;
         padding: 8px 12px;
+        font-size: 14px;
     }
     
-    // Компактные labels
-    .userform__label {
-        font-size: 11px;
-        margin-bottom: 4px;
-        text-align: left;
-        width: 100%;
-    }
-    
-    // Кнопка по центру
+    // Кнопка
     .userform__button {
         width: 100%;
         max-width: 100%;
+        height: 44px;
         margin-top: 16px;
-    }
-    
-    // Theme toggle по центру
-    .userform__theme-toggle {
-        justify-content: center;
-        margin-top: 12px;
     }
     
     // Header компактнее
@@ -881,7 +863,7 @@ ul li a:hover:nth-child(4) {
         font-size: 18px;
     }
     
-    // Социальное меню выше
+    // Социальное меню
     ul {
         top: auto;
         bottom: 20px;
