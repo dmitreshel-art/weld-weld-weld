@@ -1,7 +1,7 @@
 # Change Proposal: Desktop Form Layout Optimization
 
 ## Status
-🟢 APPROVED — Вариант B (результаты справа)
+✅ ARCHIVED — Verify passed 2026-03-04
 
 ## Summary
 Оптимизация расположения полей формы для уменьшения прокрутки на десктопе. Все поля должны быть видны без скрола при загрузке страницы.

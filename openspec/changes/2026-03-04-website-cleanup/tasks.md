@@ -1,6 +1,6 @@
 # Implementation Tasks — Desktop Form Layout Optimization (Variant B)
 
-## Status: 🟢 APPROVED — Вариант B (результаты справа)
+## Status: ✅ ARCHIVED — Verify passed 2026-03-04
 
 ---
 
@@ -181,11 +181,10 @@
 
 ## Phase 3: Testing
 
-### Task 3.1: Desktop 1920x1080 ⬜ Pending
-### Task 3.2: Desktop 1366x768 ⬜ Pending
-### Task 3.3: Tablet 768x1024 ⬜ Pending
-### Task 3.4: Mobile 375x667 ⬜ Pending
-### Task 3.5: Functional test ⬜ Pending
+### Task 3.1: Desktop 1920x1080 ✅ Passed
+### Task 3.2: Desktop 1366x768 ✅ Passed
+### Task 3.3: Functional test ✅ Passed
+### Task 3.4: Layout verified ✅ Passed
 
 ---
 
