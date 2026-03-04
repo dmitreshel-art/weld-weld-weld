@@ -711,13 +711,14 @@ ul li a:hover:nth-child(4) {
 /* Desktop Grid Layout (Variant B: Results on right) */
 /* ------------------ */
 @media screen and (min-width: 769px) {
-    // Основной контейнер - 2 колонки
+    // Основной контейнер - 2 колонки, по центру
     .userform__desktop-wrapper {
         display: grid;
         grid-template-columns: 1fr 300px;
         gap: 20px;
         max-width: 900px;
         margin: 0 auto;
+        width: 100%;
     }
     
     // Левая колонка - форма
@@ -725,6 +726,14 @@ ul li a:hover:nth-child(4) {
         display: flex;
         flex-direction: column;
         gap: 12px;
+        width: 100%;
+    }
+    
+    // Box внутри должен быть на полную ширину
+    .userform__input-column .userform__box {
+        width: 100%;
+        padding: 16px;
+        box-sizing: border-box;
     }
     
     // Правая колонка - результаты (sticky)
@@ -769,10 +778,6 @@ ul li a:hover:nth-child(4) {
         visibility: visible !important;
         opacity: 0.5;
         transition: opacity 0.3s ease;
-        
-        &:has(.userform__output:not(:empty)) {
-            opacity: 1;
-        }
     }
     
     // Основные селекты - 2 колонки
@@ -780,6 +785,7 @@ ul li a:hover:nth-child(4) {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 12px;
+        width: 100%;
     }
     
     // Параметры шва - 3 колонки
@@ -796,15 +802,26 @@ ul li a:hover:nth-child(4) {
     // Компактные поля
     .userform__group {
         margin-bottom: 8px;
+        width: 100%;
     }
     
     .userform__select {
         max-width: 100%;
         width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .userform__select-a,
+    .userform__select-b,
+    .userform__select-c,
+    .userform__select-d,
+    .userform__select-i {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
     
     .userform__select-i {
-        width: 100%;
         height: 40px;
     }
     
@@ -812,6 +829,17 @@ ul li a:hover:nth-child(4) {
     .userform__label {
         font-size: 11px;
         margin-bottom: 2px;
+    }
+    
+    // Кнопка по центру
+    .userform__button {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    // Theme toggle по центру
+    .userform__theme-toggle {
+        justify-content: center;
     }
     
     // Header компактнее
@@ -824,7 +852,7 @@ ul li a:hover:nth-child(4) {
         font-size: 18px;
     }
     
-    // Форма ближе к верху
+    // Форма ближе к верху, по центру
     .userform {
         transform: translate(-50%, 5%);
         top: 60px;

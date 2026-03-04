@@ -730,11 +730,18 @@ ul li a:hover:nth-child(4) {
     gap: 20px;
     max-width: 900px;
     margin: 0 auto;
+    width: 100%;
   }
   .userform__input-column {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    width: 100%;
+  }
+  .userform__input-column .userform__box {
+    width: 100%;
+    padding: 16px;
+    box-sizing: border-box;
   }
   .userform__results-panel {
     position: sticky;
@@ -771,13 +778,11 @@ ul li a:hover:nth-child(4) {
     opacity: 0.5;
     transition: opacity 0.3s ease;
   }
-  .userform__results-panel.userform__hidden:has(.userform__output:not(:empty)) {
-    opacity: 1;
-  }
   .userform__main-selects {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
+    width: 100%;
   }
   .userform__fieldset {
     display: grid;
@@ -789,18 +794,35 @@ ul li a:hover:nth-child(4) {
   }
   .userform__group {
     margin-bottom: 8px;
+    width: 100%;
   }
   .userform__select {
     max-width: 100%;
     width: 100%;
+    box-sizing: border-box;
   }
+  .userform__select-a,
+  .userform__select-b,
+  .userform__select-c,
+  .userform__select-d,
   .userform__select-i {
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .userform__select-i {
     height: 40px;
   }
   .userform__label {
     font-size: 11px;
     margin-bottom: 2px;
+  }
+  .userform__button {
+    width: 100%;
+    max-width: 100%;
+  }
+  .userform__theme-toggle {
+    justify-content: center;
   }
   .site-header {
     margin: 15px 30px;

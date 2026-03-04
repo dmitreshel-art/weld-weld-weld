@@ -6,7 +6,7 @@
 
 ## Phase 1: CSS Layout
 
-### Task 1.1: Создать CSS Grid для desktop ✅ Ready
+### Task 1.1: Создать CSS Grid для desktop ✅ Done
 **File:** `scss/style.scss`
 
 Добавить после существующих стилей:
@@ -76,7 +76,7 @@
 
 ---
 
-### Task 1.2: Обновить HTML структуру ✅ Ready
+### Task 1.2: Обновить HTML структуру ✅ Done
 **File:** `index.html`
 
 Изменить структуру формы:
@@ -139,7 +139,7 @@
 
 ## Phase 2: Styling
 
-### Task 2.1: Стили для блока результатов ✅ Ready
+### Task 2.1: Стили для блока результатов ✅ Done
 **File:** `scss/style.scss`
 
 ```scss
@@ -165,7 +165,7 @@
 }
 ```
 
-### Task 2.2: Компактные labels ✅ Ready
+### Task 2.2: Компактные labels ✅ Done
 **File:** `scss/style.scss`
 
 ```scss
